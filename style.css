@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 为地图容器指定高度、宽度 */
+#container{
+    width: 600px;
+    height: 360px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin:-180px 0 0 -300px;
+}

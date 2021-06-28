@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272"></script>
+    <title>District</title>
+</head>
+<body>
+    <!-- 添加div标签作为地图容器 -->
+    <div id="container"></div>
+
+    <!-- 设置地图当前行政区 -->
+    <input type="text" name="set_district" id="set_district">
+    <button id="dis_conf">确定</button>
+    <script>
+        var map = new AMap.Map('container');
+        // 获取地图当前行政区
+        // map.on('moveend',function(){
+        //     map.getCity(function(info){
+        //         console.log(info);
+        //     })
+        // })
+
+        // 设置地图的当前行政区
+        map.setCity('北京市');
+
+        // 用事件设置地图当前行政区，让地图到达该地区的中心点
+        dis_conf.onclick = function(){
+            map.setCity(set_district.value);
+    
+        }
+
+
+    </script>
+</body>
+</html>

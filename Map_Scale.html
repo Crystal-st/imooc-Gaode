@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272"></script>
+    <title>scale</title>
+</head>
+<body>
+    <!-- 添加div标签作为地图容器 -->
+    <div id="container"></div>
+
+    <!-- 获取地图的显示范围
+    <div>地图右上角坐标：<span id="ne"></span></div>
+    <div>地图左下角坐标：<span id="sw"></span></div> -->
+
+    <script>
+        var map = new AMap.Map('container');
+
+        // // 获取地图的显示范围
+        // console.log(map.getBounds());
+        // console.log(map.getBounds().toString());
+        // ne.innerHTML =  map.getBounds().northeast.toString();
+        // sw.innerHTML = map.getBounds().southwest.toString();
+        // //拖动地图后显示右上角和左下角坐标
+        // map.on("moveend",function(){
+        //     console.log(map.getBounds().toString());
+        //     ne.innerHTML =  map.getBounds().northeast.toString();
+        //     sw.innerHTML = map.getBounds().southwest.toString();
+        // })
+
+        // 设置地图的显示范围 
+        // 不能直接设置map的Bounds,要先生成一个对象，然后设置这个对象
+        // var myBounds = new AMap.Bounds([120.0022,30.0033],[120.999,30.0055]);
+        // map.setBounds(myBounds);
+        // console.log(map.getBounds().toString());
+
+
+        // 限制地图的显示范围
+        // var bounds = new AMap.Bounds([120.05,30.05],[121.00,31.00]);
+        // map.setLimitBounds(bounds);
+        // console.log(map.getBounds().toString());
+
+        
+    </script>
+</body>
+</html>

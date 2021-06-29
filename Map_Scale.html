@@ -12,9 +12,15 @@
     <!-- 添加div标签作为地图容器 -->
     <div id="container"></div>
 
-    <!-- 获取地图的显示范围
+    <!-- 地图的显示范围 -->
     <div>地图右上角坐标：<span id="ne"></span></div>
-    <div>地图左下角坐标：<span id="sw"></span></div> -->
+    <div>地图左下角坐标：<span id="sw"></span></div>
+    <!-- 输入限制坐标 -->
+    <input type="text" id="ne_R">
+    <input type="text" id="ne_Q">
+    <input type="text" id="sw_R">
+    <input type="text" id="sw_Q">
+    <button id="btn_conf">确定</button>
 
     <script>
         var map = new AMap.Map('container');
@@ -43,7 +49,16 @@
         // map.setLimitBounds(bounds);
         // console.log(map.getBounds().toString());
 
-        
+        // 用按钮事件限制地图显示范围
+        btn_conf.onclick = function(){
+            var map_bounds = map.getBounds();
+            // console.log(map_bounds);
+            map_bounds.northeast.R = Number(ne_R.value);
+            map_bounds.northeast.Q = Number(ne_Q.value);
+            map_bounds.southwest.R = Number(sw_R.value);
+            map_bounds.southwest.Q = Number(sw_Q.value);
+            map.setLimitBounds(map_bounds);
+        }
     </script>
 </body>
 </html>

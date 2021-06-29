@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <div>鼠标位置的经纬度：<span id="xyNode"></span></div>
+
+    <script>
+        var map = new AMap.Map('container',{
+            zoom:8,
+            center:[120.05,30.05]
+        });
+
+        // 地图平移-以像素为单位
+        // setTimeout(function(){
+        //     map.panBy(-300,-300) //第一个参数为经度（+左-右），第二个参数为纬度（+上-下）
+        // },5000)
+
+        // panTo直接平移到指定坐标
+        // setTimeout(function(){
+        //     map.panTo([110.05230214,40.0558461023]);
+        // },3000)
+
+        // 获取鼠标的经纬度
+        map.on('click',function(e){
+            console.log(e);
+            xyNode.innerHTML = e.lnglat.lng + ',' + e.lnglat.lat;
+            map.setCenter([e.lnglat.lng,e.lnglat.lat])
+        })
+    </script>
+</body>
+</html>

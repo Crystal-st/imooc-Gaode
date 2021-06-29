@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <!-- 2城市搜索功能 -->
+    <div>
+        城市搜索：
+        <input type="text" id="city">
+        <button id="city_conf">确定</button>
+    </div>
+    <!-- 3设置显示级别 -->
+    <div>
+        显示级别：
+        <input type="text" name="level" id="zoom_level">
+        <button id="zoom_conf">确定</button>
+    </div>
+    <!-- 4设置范围限制 -->
+    <div>
+        <input type="text" name="my_bounds" id="my_bounds">
+        <button id="bounds_conf">限制范围</button>
+    </div>
+    <script>
+         var map = new AMap.Map('container');
+
+        // 1 设置地图当前显示范围是北京市，且只能显示北京市
+        var map_bounds =new AMap.Bounds([116.22422,39.813285],[116.567542,39.997639]);
+        map.setBounds(map_bounds);
+        map.setLimitBounds(map_bounds);
+        // 2 城市搜索功能
+        city_conf.onclick = function(){
+            map.clearLimitBounds(map_bounds);
+            map.setCity(city.value);
+        }
+        // 3 设置显示级别
+        zoom_conf.onclick = function(){
+            map.setZoom(zoom_level.value);
+        }
+        // 4 设置范围限制
+        bounds_conf.onclick = function(){
+
+        }
+    </script>
+</body>
+</html>

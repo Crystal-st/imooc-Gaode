@@ -24,9 +24,15 @@
     </div>
     <!-- 4设置范围限制 -->
     <div>
-        <input type="text" name="my_bounds" id="my_bounds">
-        <button id="bounds_conf">限制范围</button>
+        限制范围：
+        <button id="bounds_conf">已限制范围</button>
     </div>
+    <!-- 5显示当前省/直辖市 -->
+    <div>
+        当前所在省份/直辖市：
+        <span id="province"></span>
+    </div>
+
     <script>
          var map = new AMap.Map('container');
 
@@ -45,8 +51,26 @@
         }
         // 4 设置范围限制
         bounds_conf.onclick = function(){
-
+            if(bounds_conf.innerHTML == '已限制范围'){
+                map.clearLimitBounds(map_bounds);
+                bounds_conf.innerHTML = '已解除限制范围';
+            }
+            else{
+                map.setLimitBounds(map_bounds); 
+                bounds_conf.innerHTML = '已限制范围';
+            }
         }
+        // 为地图设置点击事件，把鼠标指向的经纬度设为中心点
+        map.on('click',function(e){
+            map.setCenter([e.lnglat.lng,e.lnglat.lat]);
+        })
+        // 为鼠标绑定moveend事件
+        map.on('moveend',function(){
+            map.getCity(function(e){
+                // console.log(e);
+                province.innerHTML = e.province;
+            })
+        })
     </script>
 </body>
 </html>

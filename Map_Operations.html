@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272"></script> -->
+    <!-- 另一种插件加载方式 -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272&plugin=AMap.Autocomplete"></script>
+    <title>常用的地图操作</title>
+</head>
+<body>
+    <div id="container"></div>
+
+<!-- 1 搜索功能 -->
+    <!-- <div>
+        搜索：
+        <input type="text" name="city_search" id="city_search"> -->
+        <!-- 搜索提示 -->
+        <!-- <ul id="places_li"></ul>
+    </div> -->
+
+<!-- 2 地图自带的搜索功能 -->
+    <div>
+        <input type="text" name="city_search" id="city_search">
+    </div>
+
+    <script>
+        var map = new AMap.Map('container',{
+            zoom:10
+        });
+    
+    // // 1 搜索功能
+    //     // ***地图加载完才能搜索
+    //     // 加载插件AMap.Autocomplete 加载完会触发回调函数
+    //     AMap.plugin('AMap.Autocomplete',function(){
+    //         // 监听输入框中内容的变化
+    //         city_search.oninput = function(){
+    //             // 设置下拉列表为空，否则提示内容会随着输入越来越多，这样保证下拉数量为data.length=10
+    //             places_li.innerHTML = '';
+    //             // 如果输入内容为空，则不执行搜索功能
+    //             if(this.value == ''){
+    //                     return;
+    //             }
+    //             new AMap.Autocomplete().search(this.value,function(status,data){
+    //                 console.log(data);
+    //                 for(var i = 0; i < data.tips.length; i ++){
+    //                     // 把搜索结果添加到搜索提示列表
+    //                     var search_li = document.createElement('li');
+    //                     search_li.innerHTML = data.tips[i].name;
+    //                     places_li.appendChild(search_li);
+    //                     // 点击搜索提示，地图移动到该位置
+    //                     search_li.lng = data.tips[i].location.lng;
+    //                     search_li.lat = data.tips[i].location.lat;
+    //                     search_li.onclick = function(){
+    //                          map.setCenter([this.lng,this.lat]);    
+    //                     }  
+    //                 }
+    //             });
+    //         }
+            
+    //     });
+
+    // 地图自带的搜索功能
+        new AMap.Autocomplete({
+            input: 'city_search'
+        });
+    </script>
+</body>
+</html>

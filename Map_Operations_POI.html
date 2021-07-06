@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=6e1c68cd18760d4f2f5108c2fdd47272&plugin=AMap.Autocomplete"></script>
+    <title>Search&POI</title>
+</head>
+<body>
+    <div id="container"></div>
+    <div>
+        <input type="text" id="searchText">
+        <button id="searchBtn">搜索</button>
+    </div>
+    <div id="searchNode"></div>
+
+    <script>
+        var map = new AMap.Map('container',{
+            zoom:10,
+            center:[116.395397,39.908132]
+        });
+
+       
+        AMap.service('AMap.PlaceSearch',function(){
+            searchBtn.onclick = function(){
+                new AMap.PlaceSearch({ //json文件
+                    pageSize:5,
+                    pageIndex:1,
+                    city:'010',
+                    citylimit:true,
+                    map:map, //展示在哪个地图里
+                    panel: 'searchNode', //搜索结果放在哪个元素下
+                }).search(searchText.value);
+            }
+            
+        });
+
+        
+    </script>
+</body>
+</html>

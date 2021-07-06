@@ -35,10 +35,10 @@
     <script>
         var map = new AMap.Map('container',{
             zoom:10, //地图初始级别
-            center:[120,30], //初始化地图的中心点
+            center:[100.379391,30.861536], //初始化地图的中心点
         });
-        // console.log(map.getZoom());//获取地图的初始级别
-        // console.log(map.getCenter().toString());//获取地图的中心点
+        console.log(map.getZoom());//获取地图的初始级别
+        console.log(map.getCenter().toString());//获取地图的中心点
         
         //放大、拖动后地图级别和中心点发生变化
        /* map.on('moveend',function(){
@@ -46,11 +46,11 @@
             console.log(map.getCenter().toString());
         },false)*/ //jquery中事件监听用'on',级别和中心是moveend的提示
         
-        //放大缩小地图显示地图级别
-        // map.on('zoomend', function(){
-        //     console.log(map.getZoom());
-        //     console.log(map.getCenter().toString());
-        // })
+        // 放大缩小地图显示地图级别
+        map.on('zoomend', function(){
+            console.log(map.getZoom());
+            console.log(map.getCenter().toString());
+        })
 
         //用定时器设置地图级别
         // setTimeout(function(){
